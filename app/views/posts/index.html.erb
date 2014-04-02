@@ -1,7 +1,32 @@
 <div class="jumbotron">
   <div class="container">
     <h1>Welcome to the blog!</h1>
-    <p>Click the button below to add your post.</p>
-    <p><a class="btn btn-primary btn-lg" role="button">Add post &raquo;</a></p>
+    <% if user_signed_in? %>
+      <p>Click the button below to add your post.</p>
+      <p><%= link_to "Add post", new_post_path, class: 'btn btn-primary btn-lg' %></p>
+    <% else %>
+      <p>Click the button below to sign up to be able to add posts.</p>
+      <p><%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
+    <% end %>
   </div>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, post_path(post) %></td>
+        <td><%= truncate(post.body, length: 200) %></td>
+        <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-primary' %>
+          <%= link_to 'Destroy', post_path(post), class: 'btn btn-danger', method: :delete,
+                      confirm: 'Are you sure?' %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

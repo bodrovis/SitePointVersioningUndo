@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>History</h1>
+
+  <ul>
+    <% @versions.each do |version| %>
+      <li>
+        <%= l(version.created_at, format: "%-d.%m.%Y %H:%M:%S %Z") %><br/>
+        Event ID: <%= version.id %><br/>
+        <b>Remote address:</b> <%= version.ip %><br/>
+        <b>Target:</b> <%= version.item_type %>
+        <small>(id: <%= version.item_id %>)</small>; <b>action</b> <%= version.event %>;<br/>
+        <% if version.whodunnit %>
+          <% user = User.find_by_id(version.whodunnit) %>
+          <% if user %>
+            <b>User:</b> <%= user.email %>
+            (last seen at <%= l(user.last_sign_in_at, format: "%-d.%m.%Y %H:%M:%S") %>)
+          <% end %>
+        <% end %>
+        <div>
+          Changeset:
+          <pre class="toggle-me"><%= version.changeset %></pre>
+        </div>
+        <div>
+          More info:
+          <pre class="toggle-me"><%= version.object %></pre>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
