@@ -37,7 +37,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'paper_trail', '~> 3.0.1'
-gem 'bcrypt-ruby', '~> 3.1.5'
 gem 'bootstrap-sass', '~> 3.1.1.0'
 gem 'devise'
 

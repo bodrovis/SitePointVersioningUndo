@@ -9,20 +9,25 @@
         <b>Remote address:</b> <%= version.ip %><br/>
         <b>Target:</b> <%= version.item_type %>
         <small>(id: <%= version.item_id %>)</small>; <b>action</b> <%= version.event %>;<br/>
-        <% if version.whodunnit %>
+
+        <b>User:</b>
+        <% if version.whodunnit && version.whodunnit != 'Guest' %>
           <% user = User.find_by_id(version.whodunnit) %>
           <% if user %>
-            <b>User:</b> <%= user.email %>
+            <%= user.email %>
             (last seen at <%= l(user.last_sign_in_at, format: "%-d.%m.%Y %H:%M:%S") %>)
           <% end %>
+        <% else %>
+          Guest
         <% end %>
+
         <div>
           Changeset:
-          <pre class="toggle-me"><%= version.changeset %></pre>
+          <pre><%= version.changeset %></pre>
         </div>
         <div>
           More info:
-          <pre class="toggle-me"><%= version.object %></pre>
+          <pre><%= version.object %></pre>
         </div>
       </li>
     <% end %>
