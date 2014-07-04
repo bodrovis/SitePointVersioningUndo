@@ -6,7 +6,7 @@
       <li>
         <%= l(version.created_at, format: "%-d.%m.%Y %H:%M:%S %Z") %><br/>
         Event ID: <%= version.id %><br/>
-        <b>Remote address:</b> <%= version.ip %><br/>
+        <b>Remote address:</b> filtered out<br/>
         <b>Target:</b> <%= version.item_type %>
         <small>(id: <%= version.item_id %>)</small>; <b>action</b> <%= version.event %>;<br/>
 
