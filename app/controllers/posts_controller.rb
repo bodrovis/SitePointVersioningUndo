@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :history, :show]
 
   def history
-    @versions = PaperTrail::Version.order('created_at DESC')
+    @versions = PaperTrail::Version.order('created_at DESC').paginate(page: params[:page], per_page: 35)
   end
 
   def undo

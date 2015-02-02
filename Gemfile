@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.13'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'annotate'
@@ -37,7 +40,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'paper_trail', '~> 3.0.1'
-gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'bootstrap-sass', '~> 3.3.3'
 gem 'devise'
 
 group :doc do
